@@ -1,4 +1,6 @@
+import WineCard from '../../components/WineCard';
 import { Wine } from '../../domain/wine';
+import { Container } from './styles';
 
 export type HomeProps = {
   wines: Wine[];
@@ -6,10 +8,18 @@ export type HomeProps = {
 
 export default function Home({ wines }: HomeProps) {
   return (
-    <h2>
+    <Container>
       {wines.map((wine) => (
-        <h2 key={wine.id}>{wine.name}</h2>
+        <WineCard
+          key={wine.id}
+          name={wine.name}
+          discount={wine.discount}
+          image={wine.image}
+          price={wine.price}
+          priceMember={wine.priceMember}
+          priceNonMember={wine.priceNonMember}
+        />
       ))}
-    </h2>
+    </Container>
   );
 }

@@ -1,0 +1,49 @@
+import styled from 'styled-components';
+
+export const Card = styled.div`
+  border: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  img {
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+`;
+
+export const PriceContainer = styled.div`
+  text-align: center;
+  font-size: ${({ theme }) => theme.fonts.sizes.small};
+  margin-right: ${({ theme }) => theme.spacings.small};
+  margin-bottom: ${({ theme }) => theme.spacings.small};
+  span {
+    background-color: #f79552;
+    color: #fff;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+  }
+`;
+
+export const Price = styled.p`
+  display: inline-block;
+  text-decoration: line-through;
+`;
+
+export const PriceMember = styled.div`
+  font-size: ${({ theme }) => theme.fonts.sizes.small};
+  text-align: center;
+  span {
+    color: #b6116e;
+  }
+`;
+
+export const NonMember = styled.div`
+  font-size: ${({ theme }) => theme.fonts.sizes.small};
+  text-align: center;
+  color: #888888;
+`;
