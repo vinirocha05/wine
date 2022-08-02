@@ -1,7 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  body {
-    background: red;
+  * {
+    box-sizing: border-box;
+    outline: none;
+    padding: 0;
+    margin: 0
   }
 `;
