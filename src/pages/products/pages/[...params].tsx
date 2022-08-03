@@ -19,7 +19,11 @@ export default function Products({ filteredWines, pagination }: ProductsProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const page = Number(ctx.query.params[0]);
-  const filter = Number(ctx.query.params[1]);
+  const filter = ctx.query.params[1].split('_');
+  const maxPrice = Number(filter[0]);
+  const minPrice = Number(filter[1]);
+
+  console.log(maxPrice, minPrice);
 
   const cardsPerPage = 9;
   const previousPage = page - 1;
@@ -34,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const wines = await getAllWines(`?page=${page}&limit=${cardsPerPage}`);
 
-  const filteredWines = filterWines(wines, filter);
+  const filteredWines = filterWines(wines, maxPrice, minPrice);
 
   return {
     props: { filteredWines, pagination },

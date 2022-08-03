@@ -1,9 +1,13 @@
 import { Wine } from '../domain/wine';
 
-export const filterWines = (wines: Wine[], price: number): Wine[] => {
+export const filterWines = (
+  wines: Wine[],
+  maxPrice?: number,
+  minPrice?: number
+): Wine[] => {
   const filteredWines = wines.filter((wine) => {
     {
-      return wine.price < price;
+      return wine.price < maxPrice && wine.price > minPrice;
     }
   });
 
