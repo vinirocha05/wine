@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardsContainer = styled.section`
   max-width: 96rem;
-  margin: 5rem auto;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(
     auto-fill,

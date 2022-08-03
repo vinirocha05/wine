@@ -1,5 +1,7 @@
 import Header from '../../components/Header';
 import WineCard from '../../components/WineCard';
+import Filters from '../../components/Filters';
+
 import { Wine } from '../../domain/wine';
 import { Container, CardsContainer } from './styles';
 
@@ -12,7 +14,7 @@ export default function Home({ wines }: HomeProps) {
     <>
       <Header />
       <Container>
-        <div>Filters</div>
+        <Filters />
         <CardsContainer>
           {wines.map((wine) => (
             <WineCard

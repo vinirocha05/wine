@@ -4,6 +4,7 @@ export const Container = styled.header`
   background-color: #fff;
   height: 10rem;
   border-bottom: 1px solid black;
+  margin-bottom: 5rem;
 `;
 
 export const Content = styled.div`
