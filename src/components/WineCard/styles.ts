@@ -51,3 +51,23 @@ export const NonMember = styled.div`
   text-align: center;
   color: #888888;
 `;
+
+export const Button = styled.button`
+  background-color: #7ebc43;
+  color: #fff;
+  padding: ${({ theme }) => theme.fonts.sizes.small};
+  border-radius: 1rem;
+  border: none;
+  width: 100%;
+  margin-top: ${({ theme }) => theme.spacings.medium};
+  transition: all ease-in-out 400ms;
+  :hover {
+    transform: scale(1.04);
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

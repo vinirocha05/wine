@@ -4,6 +4,8 @@ import {
   PriceContainer,
   PriceMember,
   NonMember,
+  Button,
+  Container,
 } from './styles';
 
 export type WineCardProps = {
@@ -24,18 +26,21 @@ export default function WineCard({
   priceNonMember,
 }: WineCardProps) {
   return (
-    <Card>
-      <img src={image} alt={name} />
-      <h2>{name}</h2>
-      <PriceContainer>
-        <Price>R$ {price}</Price>
-        <span>{discount} % off</span>
-      </PriceContainer>
+    <Container>
+      <Card>
+        <img src={image} alt={name} />
+        <h2>{name}</h2>
+        <PriceContainer>
+          <Price>R$ {price}</Price>
+          <span>{discount} % off</span>
+        </PriceContainer>
 
-      <PriceMember>
-        SÓCIO WINE: <span>R$ {priceMember}</span>
-      </PriceMember>
-      <NonMember> NÃO SÓCIO: R$ {priceNonMember}</NonMember>
-    </Card>
+        <PriceMember>
+          SÓCIO WINE: <span>R$ {priceMember}</span>
+        </PriceMember>
+        <NonMember> NÃO SÓCIO: R$ {priceNonMember}</NonMember>
+      </Card>
+      <Button>Adicionar</Button>
+    </Container>
   );
 }
