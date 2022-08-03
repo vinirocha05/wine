@@ -4,9 +4,11 @@ import Filters from '../../components/Filters';
 
 import { Wine } from '../../domain/wine';
 import { Container, CardsContainer } from './styles';
+import { Pagination } from '../../domain/pagination';
 
 export type HomeProps = {
   wines: Wine[];
+  pagination: Pagination;
 };
 
 export default function Home({ wines }: HomeProps) {

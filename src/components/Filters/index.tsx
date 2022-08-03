@@ -6,7 +6,7 @@ export default function Header() {
     <Container>
       <h2>Refine sua busca</h2>
       <br />
-      <Link href="/products/pages/1/">
+      <Link href="/products/pages/1/40">
         <label htmlFor="">
           <input type="radio" name="filter" />
           Até R$40,00
