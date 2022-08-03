@@ -7,7 +7,7 @@ export const filterWines = (
 ): Wine[] => {
   const filteredWines = wines.filter((wine) => {
     {
-      return wine.price < maxPrice && wine.price > minPrice;
+      return wine.price >= minPrice && wine.price <= maxPrice;
     }
   });
 

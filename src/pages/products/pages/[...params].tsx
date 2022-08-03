@@ -1,13 +1,14 @@
 import { GetServerSideProps } from 'next';
 import Home from '../../../containers/Home';
+import { countAllWines } from '../../../data/count-all-wines';
 import { filterWines } from '../../../data/filter-wines';
 import { getAllWines } from '../../../data/get-all-wines';
-import { Pagination } from '../../../domain/pagination';
+import { PaginationData } from '../../../domain/pagination';
 import { Wine } from '../../../domain/wine';
 
 export type ProductsProps = {
   filteredWines: Wine[];
-  pagination: Pagination;
+  pagination: PaginationData;
 };
 export default function Products({ filteredWines, pagination }: ProductsProps) {
   return (
@@ -23,22 +24,27 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const maxPrice = Number(filter[0]);
   const minPrice = Number(filter[1]);
 
-  console.log(maxPrice, minPrice);
-
   const cardsPerPage = 9;
   const previousPage = page - 1;
   const nextPage = page + 1;
+
+  const winesPagination = await getAllWines(
+    `?page=${page}&limit=${cardsPerPage}`
+  );
+
+  const wines = await getAllWines(``);
+
+  const filteredWines = filterWines(wines, maxPrice, minPrice);
+
+  const totalItems = filteredWines.length;
 
   const pagination = {
     page,
     cardsPerPage,
     previousPage,
     nextPage,
+    totalItems,
   };
-
-  const wines = await getAllWines(`?page=${page}&limit=${cardsPerPage}`);
-
-  const filteredWines = filterWines(wines, maxPrice, minPrice);
 
   return {
     props: { filteredWines, pagination },

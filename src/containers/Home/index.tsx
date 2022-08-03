@@ -4,14 +4,15 @@ import Filters from '../../components/Filters';
 
 import { Wine } from '../../domain/wine';
 import { Container, CardsContainer } from './styles';
-import { Pagination } from '../../domain/pagination';
+import { PaginationData } from '../../domain/pagination';
+import Pagination from '../../components/Pagination';
 
 export type HomeProps = {
   wines: Wine[];
-  pagination: Pagination;
+  pagination: PaginationData;
 };
 
-export default function Home({ wines }: HomeProps) {
+export default function Home({ wines, pagination }: HomeProps) {
   return (
     <>
       <Header />
@@ -31,6 +32,7 @@ export default function Home({ wines }: HomeProps) {
           ))}
         </CardsContainer>
       </Container>
+      <Pagination {...pagination} />
     </>
   );
 }
