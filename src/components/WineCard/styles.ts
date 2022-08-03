@@ -5,6 +5,7 @@ export const Card = styled.div`
   border-radius: 1rem;
   padding: 2rem;
   background-color: #fff;
+  transition: all ease-in-out 400ms;
   img {
     width: 100%;
   }
@@ -12,6 +13,9 @@ export const Card = styled.div`
   h2 {
     text-align: center;
     margin-bottom: 1rem;
+  }
+  :hover {
+    transform: scale(1.04);
   }
 `;
 
