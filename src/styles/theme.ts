@@ -1,6 +1,7 @@
 export const theme = {
   colors: {
-    primary: '#0070f3',
+    pink: '#b6116e',
+    green: '#7ebc43',
   },
   fonts: {
     sizes: {

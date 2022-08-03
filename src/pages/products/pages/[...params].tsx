@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next';
 import Home from '../../../containers/Home';
-import { countAllWines } from '../../../data/count-all-wines';
 import { filterWines } from '../../../data/filter-wines';
 import { getAllWines } from '../../../data/get-all-wines';
 import { PaginationData } from '../../../domain/pagination';
@@ -28,11 +27,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const previousPage = page - 1;
   const nextPage = page + 1;
 
-  const winesPagination = await getAllWines(
-    `?page=${page}&limit=${cardsPerPage}`
-  );
+  // const winesPagination = await getAllWines(
+  //   `?page=${page}&limit=${cardsPerPage}`
+  // );
 
-  const wines = await getAllWines(``);
+  const wines = await getAllWines();
 
   const filteredWines = filterWines(wines, maxPrice, minPrice);
 

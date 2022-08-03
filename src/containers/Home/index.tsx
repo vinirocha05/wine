@@ -9,7 +9,7 @@ import Pagination from '../../components/Pagination';
 
 export type HomeProps = {
   wines: Wine[];
-  pagination: PaginationData;
+  pagination?: PaginationData;
 };
 
 export default function Home({ wines, pagination }: HomeProps) {

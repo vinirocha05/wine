@@ -42,7 +42,7 @@ export const PriceMember = styled.div`
   font-size: ${({ theme }) => theme.fonts.sizes.small};
   text-align: center;
   span {
-    color: ${({ theme }) => theme.colors.pink};
+    color: #b6116e;
   }
 `;
 
@@ -53,7 +53,7 @@ export const NonMember = styled.div`
 `;
 
 export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.green};
+  background-color: #7ebc43;
   color: #fff;
   padding: ${({ theme }) => theme.fonts.sizes.small};
   border-radius: 1rem;
