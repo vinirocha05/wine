@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const maxPrice = Number(filter[0]);
   const minPrice = Number(filter[1]);
 
-  const cardsPerPage = 9;
+  const cardsPerPage = 6;
   const previousPage = page - 1;
   const nextPage = page + 1;
 

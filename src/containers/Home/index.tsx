@@ -13,13 +13,29 @@ export type HomeProps = {
 };
 
 export default function Home({ wines, pagination }: HomeProps) {
+  const winesPagination = [];
+
+  if (pagination) {
+    for (
+      let i = (pagination.page - 1) * pagination.cardsPerPage;
+      i < pagination.cardsPerPage;
+      i++
+    ) {
+      winesPagination.push(wines[i]);
+    }
+  } else {
+    for (let i = 0; i < 6; i++) {
+      winesPagination.push(wines[i]);
+    }
+  }
+
   return (
     <>
       <Header />
       <Container>
         <Filters />
         <CardsContainer>
-          {wines.map((wine) => (
+          {winesPagination.map((wine) => (
             <WineCard
               key={wine.id}
               name={wine.name}
