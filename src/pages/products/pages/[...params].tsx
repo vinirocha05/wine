@@ -8,20 +8,29 @@ import { Wine } from '../../../domain/wine';
 export type ProductsProps = {
   filteredWines: Wine[];
   pagination: PaginationData;
+  filter: string;
 };
-export default function Products({ filteredWines, pagination }: ProductsProps) {
+export default function Products({
+  filteredWines,
+  pagination,
+  filter,
+}: ProductsProps) {
   return (
     <div>
-      <Home wines={filteredWines} pagination={pagination} />
+      <Home wines={filteredWines} pagination={pagination} filter={filter} />
     </div>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const page = Number(ctx.query.params[0]);
-  const filter = ctx.query.params[1].split('_');
-  const maxPrice = Number(filter[0]);
-  const minPrice = Number(filter[1]);
+  console.log(ctx.query.params.length);
+
+  let filterUrl = '';
+
+  if (ctx.query.params.length == 2) {
+    filterUrl = ctx.query.params[1];
+  }
 
   const cardsPerPage = 6;
   const previousPage = page - 1;
@@ -33,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const wines = await getAllWines();
 
-  const filteredWines = filterWines(wines, maxPrice, minPrice);
+  const filteredWines = filterWines(wines, filterUrl);
 
   const totalItems = filteredWines.length;
 
@@ -46,6 +55,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   };
 
   return {
-    props: { filteredWines, pagination },
+    props: { filteredWines, pagination, filterUrl },
   };
 };

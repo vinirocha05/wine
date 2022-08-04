@@ -10,15 +10,16 @@ import Pagination from '../../components/Pagination';
 export type HomeProps = {
   wines: Wine[];
   pagination?: PaginationData;
+  filter?: string;
 };
 
-export default function Home({ wines, pagination }: HomeProps) {
+export default function Home({ wines, pagination, filter }: HomeProps) {
   const winesPagination = [];
 
   if (pagination) {
     for (
       let i = (pagination.page - 1) * pagination.cardsPerPage;
-      i < pagination.cardsPerPage;
+      i < pagination.cardsPerPage * pagination.page;
       i++
     ) {
       winesPagination.push(wines[i]);
@@ -28,6 +29,8 @@ export default function Home({ wines, pagination }: HomeProps) {
       winesPagination.push(wines[i]);
     }
   }
+
+  console.log(winesPagination.length);
 
   return (
     <>
@@ -49,7 +52,7 @@ export default function Home({ wines, pagination }: HomeProps) {
           ))}
         </CardsContainer>
       </Container>
-      <Pagination {...pagination} />
+      <Pagination {...pagination} filter={filter} />
     </>
   );
 }

@@ -10,5 +10,6 @@ export const Container = styled.div`
     border: none;
     margin-left: 1rem;
     border-radius: 0.6rem;
+    text-decoration: none;
   }
 `;
