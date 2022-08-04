@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import {
   Card,
   Price,
@@ -15,6 +17,7 @@ export type WineCardProps = {
   discount: number;
   priceMember: number;
   priceNonMember: number;
+  id: number;
 };
 
 export default function WineCard({
@@ -24,22 +27,25 @@ export default function WineCard({
   discount,
   priceMember,
   priceNonMember,
+  id,
 }: WineCardProps) {
   return (
     <Container>
-      <Card>
-        <img src={image} alt={name} />
-        <h2>{name}</h2>
-        <PriceContainer>
-          <Price>R$ {price}</Price>
-          <span>{discount} % off</span>
-        </PriceContainer>
+      <Link as={`/products/${id}`} href="/products/[id]">
+        <Card>
+          <img src={image} alt={name} />
+          <h2>{name}</h2>
+          <PriceContainer>
+            <Price>R$ {price}</Price>
+            <span>{discount} % off</span>
+          </PriceContainer>
 
-        <PriceMember>
-          SÓCIO WINE: <span>R$ {priceMember}</span>
-        </PriceMember>
-        <NonMember> NÃO SÓCIO: R$ {priceNonMember}</NonMember>
-      </Card>
+          <PriceMember>
+            SÓCIO WINE: <span>R$ {priceMember}</span>
+          </PriceMember>
+          <NonMember> NÃO SÓCIO: R$ {priceNonMember}</NonMember>
+        </Card>
+      </Link>
       <Button>Adicionar</Button>
     </Container>
   );

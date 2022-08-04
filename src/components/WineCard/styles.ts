@@ -6,6 +6,7 @@ export const Card = styled.div`
   padding: 2rem;
   background-color: #fff;
   transition: all ease-in-out 400ms;
+  height: 100%;
   img {
     width: 100%;
   }
@@ -70,4 +71,5 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 `;

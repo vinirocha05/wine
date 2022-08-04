@@ -28,6 +28,7 @@ export default function Home({ wines, pagination }: HomeProps) {
               price={wine.price}
               priceMember={wine.priceMember}
               priceNonMember={wine.priceNonMember}
+              id={wine.id + 1}
             />
           ))}
         </CardsContainer>
