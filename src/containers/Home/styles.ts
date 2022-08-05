@@ -18,3 +18,16 @@ export const ErrorMessage = styled.p`
   align-items: center;
   font-size: ${({ theme }) => theme.fonts.sizes.large};
 `;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 96rem;
+  margin: 0 auto;
+
+  p {
+    font-size: ${({ theme }) => theme.fonts.sizes.medium};
+    margin-bottom: 3rem;
+  }
+`;
