@@ -13,3 +13,10 @@ export const DetailsContainer = styled.section`
   grid-template-columns: 1fr 5fr;
   gap: 2rem;
 `;
+export const LinkContainer = styled.div`
+  margin-left: 20rem;
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+`;
