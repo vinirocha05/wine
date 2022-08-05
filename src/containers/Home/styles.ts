@@ -13,3 +13,8 @@ export const Container = styled.section`
   grid-template-columns: 1fr 5fr;
   gap: 2rem;
 `;
+
+export const ErrorMessage = styled.p`
+  align-items: center;
+  font-size: ${({ theme }) => theme.fonts.sizes.large};
+`;

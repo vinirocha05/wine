@@ -3,7 +3,7 @@ import WineCard from '../../components/WineCard';
 import Filters from '../../components/Filters';
 
 import { Wine } from '../../domain/wine';
-import { Container, CardsContainer } from './styles';
+import { Container, CardsContainer, ErrorMessage } from './styles';
 import { PaginationData } from '../../domain/pagination';
 import Pagination from '../../components/Pagination';
 
@@ -37,20 +37,24 @@ export default function Home({ wines, pagination }: HomeProps) {
       <Container>
         <Filters />
         <CardsContainer>
-          {wines.length > 0
-            ? winesPagination.map((wine) => (
-                <WineCard
-                  key={wine.id}
-                  name={wine.name}
-                  discount={wine.discount}
-                  image={wine.image}
-                  price={wine.price}
-                  priceMember={wine.priceMember}
-                  priceNonMember={wine.priceNonMember}
-                  id={wine.id + 1}
-                />
-              ))
-            : 'Ops.. Não encontramos nenhum produtos :( '}
+          {wines.length > 0 ? (
+            winesPagination.map((wine) => (
+              <WineCard
+                key={wine.id}
+                name={wine.name}
+                discount={wine.discount}
+                image={wine.image}
+                price={wine.price}
+                priceMember={wine.priceMember}
+                priceNonMember={wine.priceNonMember}
+                id={wine.id + 1}
+              />
+            ))
+          ) : (
+            <ErrorMessage>
+              Ops.. Não encontramos nenhum produtos : {'('}
+            </ErrorMessage>
+          )}
         </CardsContainer>
       </Container>
       <Pagination

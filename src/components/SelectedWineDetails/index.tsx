@@ -1,4 +1,5 @@
 import { Wine } from '../../domain/wine';
+import { FaStar } from 'react-icons/fa';
 import {
   Heading,
   Infos,
@@ -14,6 +15,12 @@ export type SelectedWineProps = {
 };
 
 export default function SelectedWine({ selectedWine }: SelectedWineProps) {
+  const ratingStarts = [];
+
+  for (let i = 0; i < selectedWine.rating; i++) {
+    ratingStarts.push(i);
+  }
+
   return (
     <Container>
       <Tracking>
@@ -25,7 +32,16 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
         <p>{selectedWine.type} </p>
         <p>{selectedWine.classification}</p>
         <p> {selectedWine.size}</p>
-        <p>{selectedWine.rating}</p>
+        {ratingStarts.map((e) => (
+          <FaStar key={e} style={{ color: '#F9B950', marginLeft: '0.5rem' }} />
+        ))}
+        {selectedWine.avaliations > 0 ? (
+          <p>
+            {'('} {selectedWine.avaliations} {')'}
+          </p>
+        ) : (
+          ''
+        )}
       </Infos>
       <MemberPrice>R$ {selectedWine.priceMember}</MemberPrice>
       <NonMemberPrice>
