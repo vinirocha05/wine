@@ -5,14 +5,14 @@ export const filterWines = (wines: Wine[], filterUrl?: string): Wine[] => {
   let maxPrice = 10000;
   if (filterUrl != '') {
     const aux = filterUrl.split('_');
-    minPrice = Number(aux[0]);
-    maxPrice = Number(aux[1]);
+    minPrice = Number(aux[1]);
+    maxPrice = Number(aux[0]);
   }
+
   const filteredWines = wines.filter((wine) => {
     {
       return wine.price >= minPrice && wine.price <= maxPrice;
     }
   });
-
   return filteredWines;
 };

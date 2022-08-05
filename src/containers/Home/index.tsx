@@ -9,11 +9,10 @@ import Pagination from '../../components/Pagination';
 
 export type HomeProps = {
   wines: Wine[];
-  pagination?: PaginationData;
-  filter?: string;
+  pagination: PaginationData;
 };
 
-export default function Home({ wines, pagination, filter }: HomeProps) {
+export default function Home({ wines, pagination }: HomeProps) {
   const winesPagination = [];
 
   if (pagination) {
@@ -30,7 +29,7 @@ export default function Home({ wines, pagination, filter }: HomeProps) {
     }
   }
 
-  console.log(winesPagination.length);
+  console.log(pagination);
 
   return (
     <>
@@ -38,21 +37,30 @@ export default function Home({ wines, pagination, filter }: HomeProps) {
       <Container>
         <Filters />
         <CardsContainer>
-          {winesPagination.map((wine) => (
-            <WineCard
-              key={wine.id}
-              name={wine.name}
-              discount={wine.discount}
-              image={wine.image}
-              price={wine.price}
-              priceMember={wine.priceMember}
-              priceNonMember={wine.priceNonMember}
-              id={wine.id + 1}
-            />
-          ))}
+          {wines.length > 0
+            ? winesPagination.map((wine) => (
+                <WineCard
+                  key={wine.id}
+                  name={wine.name}
+                  discount={wine.discount}
+                  image={wine.image}
+                  price={wine.price}
+                  priceMember={wine.priceMember}
+                  priceNonMember={wine.priceNonMember}
+                  id={wine.id + 1}
+                />
+              ))
+            : 'Ops.. Não encontramos nenhum produtos :( '}
         </CardsContainer>
       </Container>
-      <Pagination {...pagination} filter={filter} />
+      <Pagination
+        nextPage={pagination.nextPage}
+        cardsPerPage={pagination.cardsPerPage}
+        page={pagination.page}
+        previousPage={pagination.previousPage}
+        totalItems={pagination.totalItems}
+        filter={pagination.filter}
+      />
     </>
   );
 }

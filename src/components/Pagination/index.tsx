@@ -3,7 +3,7 @@ import { PaginationData } from '../../domain/pagination';
 import { Container } from './styles';
 
 export type PaginationProps = PaginationData & {
-  filter?: string;
+  filter: string;
 };
 export default function Pagination({
   nextPage,
@@ -13,21 +13,19 @@ export default function Pagination({
   totalItems,
   filter,
 }: PaginationProps) {
-  const hasNextPage = nextPage * cardsPerPage < cardsPerPage + totalItems;
-  const hasPreviousPage = previousPage > 1;
-
   const numberOfPages = Math.ceil(totalItems / cardsPerPage);
   const pages = [];
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i + 1);
   }
-  const filterUrl = filter ? '' : filter;
+
+  console.log(nextPage, previousPage, page, totalItems, filter);
 
   return (
     <Container>
       {pages.map((page) => {
         return (
-          <Link key={page} href={`/products/pages//${page}/${filterUrl}`}>
+          <Link key={page} href={`/products/pages/${page}/${filter}`}>
             {page}
           </Link>
         );

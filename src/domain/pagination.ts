@@ -4,4 +4,5 @@ export type PaginationData = {
   previousPage: number;
   nextPage: number;
   totalItems: number;
+  filter?: string;
 };
