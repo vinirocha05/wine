@@ -18,14 +18,13 @@ export default function Pagination({
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i + 1);
   }
-
-  console.log(nextPage, previousPage, page, totalItems, filter);
+  const filterUrl = filter ? filter : '';
 
   return (
     <Container>
       {pages.map((page) => {
         return (
-          <Link key={page} href={`/products/pages/${page}/${filter}`}>
+          <Link key={page} href={`/products/pages/${page}/${filterUrl}`}>
             {page}
           </Link>
         );
