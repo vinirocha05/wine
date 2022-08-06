@@ -11,6 +11,7 @@ import {
 } from './styles';
 import { PaginationData } from '../../domain/pagination';
 import Pagination from '../../components/Pagination';
+import { keyframes } from 'styled-components';
 
 export type HomeProps = {
   wines: Wine[];
@@ -23,13 +24,12 @@ export default function Home({ wines, pagination }: HomeProps) {
   if (pagination) {
     for (
       let i = (pagination.page - 1) * pagination.cardsPerPage;
-      i < pagination.cardsPerPage * pagination.page;
+      i <
+      (pagination.cardsPerPage * pagination.page > pagination.totalItems
+        ? pagination.totalItems
+        : pagination.cardsPerPage * pagination.page);
       i++
     ) {
-      winesPagination.push(wines[i]);
-    }
-  } else {
-    for (let i = 0; i < 6; i++) {
       winesPagination.push(wines[i]);
     }
   }
