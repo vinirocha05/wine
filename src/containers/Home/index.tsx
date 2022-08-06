@@ -11,7 +11,6 @@ import {
 } from './styles';
 import { PaginationData } from '../../domain/pagination';
 import Pagination from '../../components/Pagination';
-import { keyframes } from 'styled-components';
 
 export type HomeProps = {
   wines: Wine[];

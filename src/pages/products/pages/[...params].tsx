@@ -1,4 +1,6 @@
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import Loading from '../../../components/Loading';
 import Home from '../../../containers/Home';
 import { filterWines } from '../../../data/filter-wines';
 import { getAllWines } from '../../../data/get-all-wines';
@@ -10,6 +12,9 @@ export type ProductsProps = {
   pagination: PaginationData;
 };
 export default function Products({ filteredWines, pagination }: ProductsProps) {
+  const router = useRouter();
+
+  if (router.isFallback) return <Loading />;
   return (
     <div>
       <Home wines={filteredWines} pagination={pagination} />
