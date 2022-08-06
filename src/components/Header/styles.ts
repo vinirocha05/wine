@@ -24,6 +24,12 @@ export const Content = styled.div`
 
   ul li {
     margin-left: 2rem;
+    transition: all ease-in-out 200ms;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: 2px solid ${({ theme }) => theme.colors.pink};
+    }
   }
 `;
 

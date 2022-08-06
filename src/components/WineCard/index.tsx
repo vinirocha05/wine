@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Wine } from '../../domain/wine';
 
 import {
   Card,
@@ -11,42 +12,30 @@ import {
 } from './styles';
 
 export type WineCardProps = {
-  image: string;
-  name: string;
-  price: number;
-  discount: number;
-  priceMember: number;
-  priceNonMember: number;
-  id: number;
+  wine: Wine;
 };
 
-export default function WineCard({
-  image,
-  name,
-  price,
-  discount,
-  priceMember,
-  priceNonMember,
-  id,
-}: WineCardProps) {
+export default function WineCard({ wine }: WineCardProps) {
   return (
     <Container>
-      <Link as={`/products/${id}`} href="/products/[id]">
+      <Link as={`/products/${wine.id + 1}`} href="/products/[id]">
         <Card>
-          <img src={image} alt={name} />
-          <h2>{name}</h2>
+          <img src={wine.image} alt={wine.name} />
+          <h2>{wine.name}</h2>
           <PriceContainer>
-            <Price>R$ {price}</Price>
-            <span>{discount} % off</span>
+            <Price>R$ {wine.price}</Price>
+            <span>{wine.discount} % off</span>
           </PriceContainer>
 
           <PriceMember>
-            SÓCIO WINE: <span>R$ {priceMember}</span>
+            SÓCIO WINE: <span>R$ {wine.priceMember}</span>
           </PriceMember>
-          <NonMember> NÃO SÓCIO: R$ {priceNonMember}</NonMember>
+          <NonMember> NÃO SÓCIO: R$ {wine.priceNonMember}</NonMember>
         </Card>
       </Link>
-      <Button>Adicionar</Button>
+      <Link as={`/products/${wine.id + 1}`} href="/products/[id]">
+        <Button>Adicionar</Button>
+      </Link>
     </Container>
   );
 }

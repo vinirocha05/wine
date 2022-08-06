@@ -22,8 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const filter = ctx.query.params.length == 2 ? ctx.query.params[1] : '';
 
-  console.log(ctx.query.params.length);
-
   const cardsPerPage = 6;
   const previousPage = page - 1;
   const nextPage = page + 1;
@@ -42,7 +40,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     totalItems,
     filter,
   };
-  console.log(pagination);
 
   return {
     props: { filteredWines, pagination, filter },

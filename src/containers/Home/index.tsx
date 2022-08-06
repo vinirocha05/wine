@@ -34,8 +34,6 @@ export default function Home({ wines, pagination }: HomeProps) {
     }
   }
 
-  console.log(pagination);
-
   return (
     <>
       <Header />
@@ -48,16 +46,7 @@ export default function Home({ wines, pagination }: HomeProps) {
           <CardsContainer>
             {wines.length > 0 ? (
               winesPagination.map((wine) => (
-                <WineCard
-                  key={wine.id}
-                  name={wine.name}
-                  discount={wine.discount}
-                  image={wine.image}
-                  price={wine.price}
-                  priceMember={wine.priceMember}
-                  priceNonMember={wine.priceNonMember}
-                  id={wine.id + 1}
-                />
+                <WineCard wine={wine} key={wine.id} />
               ))
             ) : (
               <ErrorMessage>

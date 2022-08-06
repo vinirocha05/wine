@@ -1,10 +1,9 @@
 import Header from '../../components/Header';
 
 import { Wine } from '../../domain/wine';
-import { MainContainer, LinkContainer } from './styles';
+import { MainContainer, LinkContainer, Button } from './styles';
 import WineCover from '../../components/WineCover';
 import SelectedWineDetails from '../../components/SelectedWineDetails';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export type SelectedWineProps = {
@@ -23,6 +22,7 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
       <MainContainer>
         <WineCover image={selectedWine.image} name={selectedWine.name} />
         <SelectedWineDetails selectedWine={selectedWine} />
+        <Button>Adicionar</Button>
       </MainContainer>
     </>
   );

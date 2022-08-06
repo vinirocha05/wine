@@ -17,10 +17,7 @@ export default function Header() {
         <Icons>
           <FaRegUserCircle />
           <FaSearch />
-          <img
-            src="/images/header-wine.svg"
-            alt="wine carrinho"
-          />
+          <img src="/images/header-wine.svg" alt="wine carrinho" />
         </Icons>
       </Content>
     </Container>

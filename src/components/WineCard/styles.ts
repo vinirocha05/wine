@@ -61,6 +61,7 @@ export const Button = styled.button`
   border: none;
   width: 100%;
   margin-top: ${({ theme }) => theme.spacings.medium};
+  cursor: pointer;
   transition: all ease-in-out 400ms;
   :hover {
     transform: scale(1.04);
