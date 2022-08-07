@@ -37,7 +37,10 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
   return (
     <Container>
       <Tracking>
-        Vinhos {'>'} {selectedWine.country} {'>'} {selectedWine.region}
+        <span>
+          Vinhos {' > '} {selectedWine.country}
+        </span>
+        {' > '} {selectedWine.region}
       </Tracking>
       <Heading>{selectedWine.name}</Heading>
       <Infos>
@@ -70,7 +73,6 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
             onClick={() => {
               if (quantity > 0) {
                 setQuantity(quantity - 1);
-                setOrder({ ...selectedWine, quantity: quantity - 1 });
               }
             }}
           >
@@ -80,13 +82,18 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
           <button
             onClick={() => {
               setQuantity(quantity + 1);
-              setOrder({ ...selectedWine, quantity: quantity + 1 });
             }}
           >
             +
           </button>
         </ButtonController>
-        <p>Adicionar</p>
+        <p
+          onClick={() => {
+            setOrder({ ...selectedWine, quantity });
+          }}
+        >
+          Adicionar
+        </p>
       </ButtonContainer>
     </Container>
   );

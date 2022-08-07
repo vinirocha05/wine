@@ -18,6 +18,9 @@ export const ContentContainer = styled.div`
   max-width: 96rem;
   font-size: ${({ theme }) => theme.fonts.sizes.medium};
   margin-bottom: 3rem;
+  p {
+    padding-left: 4rem;
+  }
 `;
 
 export const CardsContainer = styled.div`
@@ -39,7 +42,7 @@ export const FiltersContainer = styled.div`
   margin-left: 2rem;
   font-size: ${({ theme }) => theme.fonts.sizes.medium};
   input {
-    margin-right: 2rem;
+    margin: ${({ theme }) => theme.spacings.small};
   }
 `;
 
@@ -50,12 +53,16 @@ export const Pages = styled.div`
   margin: 2rem auto;
   max-width: 50rem;
   span {
-    background-color: #b6116e;
+    background-color: ${({ theme }) => theme.colors.pink};
     color: #fff;
     padding: 1rem;
     border: none;
     margin-left: 1rem;
     border-radius: 0.6rem;
     cursor: pointer;
+  }
+
+  @media (max-width: 800px) {
+    font-size: ${({ theme }) => theme.fonts.sizes.small};
   }
 `;

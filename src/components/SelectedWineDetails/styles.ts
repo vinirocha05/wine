@@ -7,6 +7,10 @@ export const Container = styled.div`
 
 export const Tracking = styled.div`
   font-size: ${({ theme }) => theme.fonts.sizes.medium};
+
+  span {
+    color: ${({ theme }) => theme.colors.pink};
+  }
 `;
 export const Heading = styled.h2`
   margin-top: 1rem;
@@ -72,6 +76,7 @@ export const ButtonContainer = styled.div`
   p {
     text-align: center;
     color: #eee;
+    cursor: pointer;
   }
 `;
 

@@ -6,6 +6,14 @@ export const MainContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
+
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 350px;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const LinkContainer = styled.div`
@@ -14,4 +22,8 @@ export const LinkContainer = styled.div`
   text-decoration: none;
   color: black;
   cursor: pointer;
+
+  @media (max-width: 800px) {
+    margin-left: 2rem;
+  }
 `;

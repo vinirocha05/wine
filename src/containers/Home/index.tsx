@@ -17,13 +17,15 @@ export type HomeProps = {
 };
 
 export default function Home({ wines }: HomeProps) {
+  //Creatign hooks
   const [filter, setFilter] = useState('');
   const [page, setPage] = useState(1);
 
+  //filtering wines
   const filteredWine = filterWines(wines, filter);
 
+  // creating pagination logic
   const totalItems = filteredWine.length;
-
   const cardsPerPage = 6;
 
   const winesPagination = [];
@@ -36,6 +38,7 @@ export default function Home({ wines }: HomeProps) {
     winesPagination.push(filteredWine[i]);
   }
 
+  //creating pages
   const pages = [];
 
   for (let i = 0; i < Math.ceil(totalItems / cardsPerPage); i++) {
@@ -48,6 +51,10 @@ export default function Home({ wines }: HomeProps) {
       <Container>
         <FiltersContainer>
           <h2>Refine sua busca</h2>
+          <br />
+          <p>
+            <strong>Por preço</strong>
+          </p>
           <br />
           <label htmlFor="">
             <input type="radio" name="filter" onChange={() => setFilter('')} />
