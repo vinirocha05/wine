@@ -1,49 +1,107 @@
 import Header from '../../components/Header';
 import WineCard from '../../components/WineCard';
-import Filters from '../../components/Filters';
-
 import { Wine } from '../../domain/wine';
 import {
   Container,
   CardsContainer,
   ErrorMessage,
   ContentContainer,
+  FiltersContainer,
+  Pages,
 } from './styles';
 import { PaginationData } from '../../domain/pagination';
-import Pagination from '../../components/Pagination';
+import { useState } from 'react';
+import { filterWines } from '../../data/filter-wines';
 
 export type HomeProps = {
   wines: Wine[];
   pagination: PaginationData;
 };
 
-export default function Home({ wines, pagination }: HomeProps) {
+export default function Home({ wines }: HomeProps) {
+  const [filter, setFilter] = useState('');
+  const [page, setPage] = useState(1);
+
+  const filteredWine = filterWines(wines, filter);
+
+  const totalItems = filteredWine.length;
+
+  const cardsPerPage = 6;
+
   const winesPagination = [];
 
-  if (pagination) {
-    for (
-      let i = (pagination.page - 1) * pagination.cardsPerPage;
-      i <
-      (pagination.cardsPerPage * pagination.page > pagination.totalItems
-        ? pagination.totalItems
-        : pagination.cardsPerPage * pagination.page);
-      i++
-    ) {
-      winesPagination.push(wines[i]);
-    }
+  for (
+    let i = (page - 1) * cardsPerPage;
+    i < (cardsPerPage * page > totalItems ? totalItems : cardsPerPage * page);
+    i++
+  ) {
+    winesPagination.push(filteredWine[i]);
+  }
+
+  const pages = [];
+
+  for (let i = 0; i < Math.ceil(totalItems / cardsPerPage); i++) {
+    pages.push(i + 1);
   }
 
   return (
     <>
       <Header />
       <Container>
-        <Filters />
+        <FiltersContainer>
+          <h2>Refine sua busca</h2>
+          <br />
+          <label htmlFor="">
+            <input type="radio" name="filter" onChange={() => setFilter('')} />
+            Todos os preços
+          </label>
+          <label htmlFor="">
+            <input
+              type="radio"
+              name="filter"
+              onChange={() => setFilter('40_0')}
+            />
+            Até R$40,00
+          </label>
+          <label htmlFor="">
+            <input
+              type="radio"
+              name="filter"
+              onChange={() => setFilter('60_40')}
+            />
+            R$40 A R$60
+          </label>
+          <label htmlFor="">
+            <input
+              type="radio"
+              name="filter"
+              onChange={() => setFilter('200_100')}
+            />
+            R$100 A R$200
+          </label>
+          <label htmlFor="">
+            <input
+              type="radio"
+              name="filter"
+              onChange={() => setFilter('500_200')}
+            />
+            R$200 A R$500
+          </label>
+          <label htmlFor="">
+            <input
+              type="radio"
+              name="filter"
+              onChange={() => setFilter('10000_500')}
+            />
+            Acima de R$500
+          </label>
+        </FiltersContainer>
         <ContentContainer>
           <p>
-            <strong>{pagination.totalItems}</strong> produtos encontrados
+            <strong>{totalItems}</strong> produtos encontrados
           </p>
           <CardsContainer>
-            {wines.length > 0 ? (
+            {filteredWine.length > 0 ? (
               winesPagination.map((wine) => (
                 <WineCard wine={wine} key={wine.id} />
               ))
@@ -55,14 +113,13 @@ export default function Home({ wines, pagination }: HomeProps) {
           </CardsContainer>
         </ContentContainer>
       </Container>
-      <Pagination
-        nextPage={pagination.nextPage}
-        cardsPerPage={pagination.cardsPerPage}
-        page={pagination.page}
-        previousPage={pagination.previousPage}
-        totalItems={pagination.totalItems}
-        filter={pagination.filter}
-      />
+      <Pages>
+        {pages.map((e) => (
+          <span key={e} onClick={() => setPage(e)}>
+            {e}
+          </span>
+        ))}
+      </Pages>
     </>
   );
 }

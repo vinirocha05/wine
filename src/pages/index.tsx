@@ -7,10 +7,9 @@ import { PaginationData } from '../domain/pagination';
 export type WineProps = {
   wines: Wine[];
   pagination: PaginationData;
-  filterUrl: string;
 };
 
-export default function App({ wines, pagination, filterUrl }: WineProps) {
+export default function App({ wines, pagination }: WineProps) {
   return <Home wines={wines} pagination={pagination} />;
 }
 
@@ -22,8 +21,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const previousPage = page - 1;
   const nextPage = page + 1;
 
-  const filterUrl = '';
-
   const pagination = {
     page,
     cardsPerPage,
@@ -32,6 +29,6 @@ export const getStaticProps: GetStaticProps = async () => {
     totalItems,
   };
   return {
-    props: { wines, pagination, filterUrl }, // will be passed to the page component as props
+    props: { wines, pagination }, // will be passed to the page component as props
   };
 };

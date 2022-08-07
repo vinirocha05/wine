@@ -32,3 +32,30 @@ export const ErrorMessage = styled.p`
   align-items: center;
   font-size: ${({ theme }) => theme.fonts.sizes.large};
 `;
+
+export const FiltersContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  input {
+    margin-right: 2rem;
+  }
+`;
+
+export const Pages = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  margin: 2rem auto;
+  max-width: 50rem;
+  span {
+    background-color: #b6116e;
+    color: #fff;
+    padding: 1rem;
+    border: none;
+    margin-left: 1rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+  }
+`;
