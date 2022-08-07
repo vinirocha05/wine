@@ -11,7 +11,8 @@ import {
   ButtonContainer,
   ButtonController,
 } from './styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Order } from '../../domain/order';
 
 export type SelectedWineProps = {
   selectedWine: Wine;
@@ -25,6 +26,13 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
   }
 
   const [quantity, setQuantity] = useState(0);
+  const [order, setOrder] = useState<Order>();
+
+  console.log(order);
+
+  useEffect(() => {
+    localStorage.setItem('order', JSON.stringify(order));
+  }, [order]);
 
   return (
     <Container>
@@ -60,13 +68,23 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
         <ButtonController>
           <button
             onClick={() => {
-              if (quantity > 0) setQuantity(quantity - 1);
+              if (quantity > 0) {
+                setQuantity(quantity - 1);
+                setOrder({ ...selectedWine, quantity: quantity - 1 });
+              }
             }}
           >
             -
           </button>
           {quantity}
-          <button onClick={() => setQuantity(quantity + 1)}> + </button>
+          <button
+            onClick={() => {
+              setQuantity(quantity + 1);
+              setOrder({ ...selectedWine, quantity: quantity + 1 });
+            }}
+          >
+            +
+          </button>
         </ButtonController>
         <p>Adicionar</p>
       </ButtonContainer>
