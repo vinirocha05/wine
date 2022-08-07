@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 3rem auto;
-  max-width: 10rem;
+  margin: 2rem auto;
+  max-width: 30rem;
   a {
     background-color: #b6116e;
     color: #fff;
@@ -11,5 +11,11 @@ export const Container = styled.div`
     margin-left: 1rem;
     border-radius: 0.6rem;
     text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    a:nth-child(n + 4) {
+      display: none;
+    }
   }
 `;

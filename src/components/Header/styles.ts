@@ -31,6 +31,9 @@ export const Content = styled.div`
       border-bottom: 2px solid ${({ theme }) => theme.colors.pink};
     }
   }
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const Icons = styled.div`

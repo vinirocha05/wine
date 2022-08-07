@@ -1,22 +1,14 @@
 import styled from 'styled-components';
 
-export const CardsContainer = styled.section`
-  max-width: 96rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
-  gap: 5rem;
-`;
-
 export const Container = styled.section`
   display: grid;
   grid-template-columns: 1fr 5fr;
   gap: 2rem;
-`;
 
-export const ErrorMessage = styled.p`
-  align-items: center;
-  font-size: ${({ theme }) => theme.fonts.sizes.large};
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -24,10 +16,19 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   max-width: 96rem;
-  margin: 0 auto;
+  font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  margin-bottom: 3rem;
+`;
 
-  p {
-    font-size: ${({ theme }) => theme.fonts.sizes.medium};
-    margin-bottom: 3rem;
-  }
+export const CardsContainer = styled.div`
+  max-width: 100%;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  gap: 5rem;
+`;
+
+export const ErrorMessage = styled.p`
+  align-items: center;
+  font-size: ${({ theme }) => theme.fonts.sizes.large};
 `;
