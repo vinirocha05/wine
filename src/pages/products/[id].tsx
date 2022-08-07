@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import Loading from '../../components/Loading';
-import SelectedWine from '../../containers/SelectedWine';
+import WineContainer from '../../containers/WineContainer';
 import { getAllWines } from '../../data/get-all-wines';
 import { Wine } from '../../domain/wine';
 
@@ -13,7 +13,7 @@ export default function WineDetails({ selectedWine }: WineDetailsProps) {
   const router = useRouter();
   if (router.isFallback) return <Loading />;
 
-  return <SelectedWine selectedWine={selectedWine} />;
+  return <WineContainer selectedWine={selectedWine} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

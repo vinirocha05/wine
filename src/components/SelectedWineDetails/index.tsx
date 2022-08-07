@@ -8,7 +8,10 @@ import {
   SommelierComments,
   Tracking,
   Container,
+  ButtonContainer,
+  ButtonController,
 } from './styles';
+import { useState } from 'react';
 
 export type SelectedWineProps = {
   selectedWine: Wine;
@@ -20,6 +23,8 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
   for (let i = 0; i < selectedWine.rating; i++) {
     ratingStarts.push(i);
   }
+
+  const [quantity, setQuantity] = useState(0);
 
   return (
     <Container>
@@ -51,6 +56,20 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
         <h3>Comentários do Sommelier</h3>
         <p>{selectedWine.sommelierComment}</p>
       </SommelierComments>
+      <ButtonContainer>
+        <ButtonController>
+          <button
+            onClick={() => {
+              if (quantity > 0) setQuantity(quantity - 1);
+            }}
+          >
+            -
+          </button>
+          {quantity}
+          <button onClick={() => setQuantity(quantity + 1)}> + </button>
+        </ButtonController>
+        <p>Adicionar</p>
+      </ButtonContainer>
     </Container>
   );
 }

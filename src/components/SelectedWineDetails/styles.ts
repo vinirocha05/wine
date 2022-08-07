@@ -45,6 +45,36 @@ export const SommelierComments = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  ${({ theme }) => theme.colors.green};
+export const ButtonContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.green};
+  color: #fff;
+  padding: ${({ theme }) => theme.fonts.sizes.small};
+  border-radius: 1rem;
+  border: none;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: ${({ theme }) => theme.fonts.sizes.medium};
+  align-items: center;
+
+  button {
+    border: none;
+    padding: 1rem;
+    border-radius: 50rem;
+    text-align: center;
+    margin: 0 ${({ theme }) => theme.spacings.medium};
+    background-color: ${({ theme }) => theme.colors.green};
+    color: #eee;
+    border: 1px solid #eee;
+    cursor: pointer;
+  }
+
+  p {
+    text-align: center;
+    color: #eee;
+  }
+`;
+
+export const ButtonController = styled.div`
+  border-right: 1px solid #eee;
 `;

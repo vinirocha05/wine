@@ -11,7 +11,7 @@ export type WineProps = {
 };
 
 export default function App({ wines, pagination, filterUrl }: WineProps) {
-  return <Home wines={wines} pagination={pagination} filter={filterUrl} />;
+  return <Home wines={wines} pagination={pagination} />;
 }
 
 export const getStaticProps: GetStaticProps = async () => {
