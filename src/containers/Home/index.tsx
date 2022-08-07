@@ -9,13 +9,11 @@ import {
   FiltersContainer,
   Pages,
 } from './styles';
-import { PaginationData } from '../../domain/pagination';
 import { useState } from 'react';
 import { filterWines } from '../../data/filter-wines';
 
 export type HomeProps = {
   wines: Wine[];
-  pagination: PaginationData;
 };
 
 export default function Home({ wines }: HomeProps) {
