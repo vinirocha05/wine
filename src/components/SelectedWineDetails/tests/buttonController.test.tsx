@@ -1,6 +1,6 @@
-import { screen, cleanup } from '@testing-library/react';
-import SelectedWineDetails from '.';
-import { customRender } from '../../utils/customRender';
+import { screen, cleanup, render } from '@testing-library/react';
+import SelectedWineDetails from '..';
+import { customRender } from '../../../utils/customRender';
 
 const selectedWine = {
   id: 123,
@@ -25,11 +25,11 @@ afterEach(() => {
   cleanup();
 });
 
-describe('Heading', () => {
+describe('Button Controller', () => {
   customRender(<SelectedWineDetails selectedWine={selectedWine} />);
+  const button = screen.getByTestId('buttonController');
 
-  it('should render a heading', () => {
-    const heading = screen.getByTestId('heading');
-    expect(heading).toBeInTheDocument();
+  it('should render a button', () => {
+    expect(button).toBeInTheDocument();
   });
 });

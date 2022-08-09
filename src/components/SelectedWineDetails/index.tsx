@@ -70,8 +70,9 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
         <p>{selectedWine.sommelierComment}</p>
       </SommelierComments>
       <ButtonContainer>
-        <ButtonController>
+        <ButtonController data-testid="buttonController">
           <button
+            data-testid="addButton"
             onClick={() => {
               if (quantity > 0) {
                 setQuantity(quantity - 1);

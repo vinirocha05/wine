@@ -1,6 +1,6 @@
 import { screen, cleanup } from '@testing-library/react';
-import SelectedWineDetails from '.';
-import { customRender } from '../../utils/customRender';
+import SelectedWineDetails from '../';
+import { customRender } from '../../../utils/customRender';
 
 const selectedWine = {
   id: 123,
