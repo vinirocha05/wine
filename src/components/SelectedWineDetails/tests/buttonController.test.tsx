@@ -1,4 +1,4 @@
-import { screen, cleanup, render } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import SelectedWineDetails from '..';
 import { customRender } from '../../../utils/customRender';
 
