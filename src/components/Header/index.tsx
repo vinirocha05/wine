@@ -3,9 +3,9 @@ import { FaRegUserCircle, FaSearch } from 'react-icons/fa';
 
 export default function Header() {
   return (
-    <Container>
+    <Container data-testid="header">
       <Content>
-        <img src="/images/wine.svg" alt="logo wine" />
+        <img data-testid="img" src="/images/wine.svg" alt="logo wine" />
         <ul>
           <li>Clube</li>
           <li>Loja</li>

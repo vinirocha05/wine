@@ -28,26 +28,28 @@ export default function SelectedWine({ selectedWine }: SelectedWineProps) {
   const [quantity, setQuantity] = useState(0);
   const [order, setOrder] = useState<Order>();
 
-  console.log(order);
-
   useEffect(() => {
     localStorage.setItem('order', JSON.stringify(order));
   }, [order]);
 
   return (
     <Container>
-      <Tracking>
+      <Tracking data-testid="tracking">
         <span>
           Vinhos {' > '} {selectedWine.country}
         </span>
         {' > '} {selectedWine.region}
       </Tracking>
-      <Heading>{selectedWine.name}</Heading>
-      <Infos>
-        <img src={selectedWine.flag} alt={`${selectedWine.country}'s flag`} />
-        <p>{selectedWine.type} </p>
-        <p>{selectedWine.classification}</p>
-        <p> {selectedWine.size}</p>
+      <Heading data-testid="heading">{selectedWine.name}</Heading>
+      <Infos data-testid="infos">
+        <img
+          src={selectedWine.flag}
+          alt={`${selectedWine.country}'s flag`}
+          data-testid="flag"
+        />
+        <p data-testid="type">{selectedWine.type} </p>
+        <p data-testid="classification">{selectedWine.classification}</p>
+        <p data-testid="size"> {selectedWine.size}</p>
         {ratingStarts.map((e) => (
           <FaStar key={e} style={{ color: '#F9B950', marginLeft: '0.5rem' }} />
         ))}

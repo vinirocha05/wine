@@ -19,6 +19,7 @@ export type HomeProps = {
 export default function Home({ wines }: HomeProps) {
   //Creatign hooks
   const [filter, setFilter] = useState('');
+
   const [page, setPage] = useState(1);
 
   //filtering wines
