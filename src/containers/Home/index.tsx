@@ -25,8 +25,6 @@ export default function Home({ wines }: HomeProps) {
   //filtering wines
   const filteredWine = filterWines(wines, filter);
 
-  console.log(filteredWine);
-
   // creating pagination logic
   const totalItems = filteredWine.length;
   const cardsPerPage = 6;
