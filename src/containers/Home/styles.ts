@@ -64,5 +64,6 @@ export const Pages = styled.div`
 
   @media (max-width: 800px) {
     font-size: ${({ theme }) => theme.fonts.sizes.small};
+    padding-left: 2rem;
   }
 `;

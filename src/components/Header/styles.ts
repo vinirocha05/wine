@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+export type NavMobileProps = {
+  open: boolean;
+};
 
 export const Container = styled.header`
   background-color: #fff;
@@ -31,8 +34,17 @@ export const Content = styled.div`
       border-bottom: 2px solid ${({ theme }) => theme.colors.pink};
     }
   }
-  @media (max-width: 800px) {
+  span {
     display: none;
+  }
+  @media (max-width: 800px) {
+    ul {
+      display: none;
+    }
+    span {
+      display: block;
+      padding-right: 2rem;
+    }
   }
 `;
 
@@ -42,4 +54,39 @@ export const Icons = styled.div`
   align-items: center;
   width: 25rem;
   justify-content: space-between;
+  @media (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const NavMobile = styled.nav<NavMobileProps>`
+  display: ${({ open }) => (open ? '' : 'none')};
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #dedede;
+  color: black;
+  font-size: ${({ theme }) => theme.fonts.sizes.large};
+  overflow-y: hidden;
+  ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  ul li {
+    padding: 5rem 0;
+  }
+
+  span {
+    position: absolute;
+    right: 0;
+    padding: 2rem;
+    font-size: ${({ theme }) => theme.fonts.sizes.small};
+  }
 `;
