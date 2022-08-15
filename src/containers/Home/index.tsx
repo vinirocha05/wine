@@ -120,15 +120,11 @@ export default function Home({ wines }: HomeProps) {
         </ContentContainer>
       </Container>
       <Pages>
-        {pages.map((e) =>
-          e > 8 ? (
-            ''
-          ) : (
-            <span key={e} onClick={() => setPage(e)}>
-              {e}
-            </span>
-          )
-        )}
+        {pages.map((e) => (
+          <span key={e} onClick={() => setPage(e)}>
+            {e}
+          </span>
+        ))}
       </Pages>
     </>
   );

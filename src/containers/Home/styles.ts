@@ -60,10 +60,20 @@ export const Pages = styled.div`
     margin-left: 1rem;
     border-radius: 0.6rem;
     cursor: pointer;
+    text-align: center;
   }
 
   @media (max-width: 800px) {
     font-size: ${({ theme }) => theme.fonts.sizes.small};
-    padding-left: 2rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    place-items: center;
+    span {
+      padding: 1rem;
+      border: none;
+      cursor: pointer;
+      min-width: 4rem;
+    }
   }
 `;
