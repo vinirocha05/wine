@@ -12,13 +12,18 @@ import {
 import { useState } from 'react';
 import { filterWines } from '../../data/filter-wines';
 import store from '../../store';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
+import { filterWinesByText } from '../../data/filter-wines-by-text';
 
 export type HomeProps = {
   wines: Wine[];
 };
 
 export default function Home({ wines }: HomeProps) {
+  const filterByText = useSelector<typeof store.getState>(
+    (state) => state.filters.filter
+  ) as string;
+
   //Creatign hooks
   const [filter, setFilter] = useState('');
 
@@ -26,6 +31,9 @@ export default function Home({ wines }: HomeProps) {
 
   //filtering wines
   const filteredWine = filterWines(wines, filter);
+  const filteredByText = filterByText
+    ? filterWinesByText(wines, filterByText)
+    : '';
 
   // creating pagination logic
   const totalItems = filteredWine.length;
@@ -115,7 +123,11 @@ export default function Home({ wines }: HomeProps) {
               <strong>{totalItems}</strong> produtos encontrados
             </p>
             <CardsContainer>
-              {filteredWine.length > 0 ? (
+              {filteredByText ? (
+                filteredByText.map((wine) => (
+                  <WineCard wine={wine} key={wine.id} />
+                ))
+              ) : filteredWine.length > 0 ? (
                 winesPagination.map((wine) => (
                   <WineCard wine={wine} key={wine.id} />
                 ))
