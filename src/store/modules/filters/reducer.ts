@@ -28,7 +28,7 @@ const initialState = {
 };
 
 export default function filterReducer(state = initialState, action) {
-  console.log(state);
+  const newState = { ...state, filter: action.filter };
 
-  return state;
+  return newState;
 }

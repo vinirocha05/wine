@@ -1,8 +1,8 @@
 import { Container, Content, Icons, NavMobile, Search } from './styles';
 import { FaRegUserCircle, FaSearch } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import store from '../../store';
+import { setFilter } from '../../store/modules/filters/action';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -10,6 +10,10 @@ export default function Header() {
   const [filterName, setFilterName] = useState('');
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setFilter(filterName));
+  }, [filterName, dispatch]);
 
   return (
     <Container data-testid="header">
@@ -21,7 +25,6 @@ export default function Header() {
           <li>Produtores</li>
           <li>Ofertas</li>
           <li>Eventos</li>
-          <button onClick={() => dispatch({ type: 'setFilter' })}>Oi</button>
         </ul>
 
         <Icons>
