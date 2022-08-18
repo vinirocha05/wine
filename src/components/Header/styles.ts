@@ -90,3 +90,5 @@ export const NavMobile = styled.nav<NavMobileProps>`
     font-size: ${({ theme }) => theme.fonts.sizes.small};
   }
 `;
+
+export const Search = styled.div``;
