@@ -37,6 +37,10 @@ export const Content = styled.div`
   span {
     display: none;
   }
+
+  img {
+    padding-left: 2rem;
+  }
   @media (max-width: 800px) {
     ul {
       display: none;
@@ -52,7 +56,7 @@ export const Icons = styled.div`
   font-size: 4rem;
   display: flex;
   align-items: center;
-  width: 25rem;
+  width: 28rem;
   justify-content: space-between;
   @media (max-width: 800px) {
     display: none;
@@ -91,4 +95,10 @@ export const NavMobile = styled.nav<NavMobileProps>`
   }
 `;
 
-export const Search = styled.div``;
+export const Search = styled.div`
+  display: flex;
+  input {
+    padding: 0.3rem 0.6rem;
+    margin-right: 1rem;
+  }
+`;
