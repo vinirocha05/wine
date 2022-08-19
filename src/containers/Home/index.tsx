@@ -11,16 +11,20 @@ import {
 } from './styles';
 import { useState } from 'react';
 import { filterWines } from '../../data/filter-wines';
-import store from '../../store';
 import { useSelector } from 'react-redux';
 import { filterWinesByText } from '../../data/filter-wines-by-text';
 
 export type HomeProps = {
   wines: Wine[];
 };
+export interface FilterState {
+  filters: {
+    filter: string;
+  };
+}
 
 export default function Home({ wines }: HomeProps) {
-  const filterByText = useSelector<typeof store.getState>(
+  const filterByText = useSelector<FilterState>(
     (state) => state.filters.filter
   ) as string;
 
@@ -124,11 +128,7 @@ export default function Home({ wines }: HomeProps) {
             <strong>{totalItems}</strong> produtos encontrados
           </p>
           <CardsContainer>
-            {filteredByText ? (
-              filteredByText.map((wine) => (
-                <WineCard wine={wine} key={wine.id} />
-              ))
-            ) : filteredWine.length > 0 ? (
+            {winesPagination.length > 0 ? (
               winesPagination.map((wine) => (
                 <WineCard wine={wine} key={wine.id} />
               ))
